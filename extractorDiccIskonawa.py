@@ -100,7 +100,7 @@ def main():
     data = procesar(texto)
     guardar_json(data, salida)
 
-    print("✅ JSON generado correctamente:", salida)
+    print("Diccionario generado:", salida)
 
 
 if __name__ == "__main__":
