@@ -2,95 +2,80 @@ from docx import Document
 import re
 import json
 
+PARTES_ORACION = {"n.", "v.", "adj.", "adv.", "pron.", "prep.", "conj.", "interj.", "art.", "num.", "suf.", "pref.", "loc.", "expr."}
+
+# Lee el documento y extrae texto párrafo por párrafo
 def leer_docx(ruta):
     doc = Document(ruta)
     texto = "\n".join([p.text.strip() for p in doc.paragraphs if p.text.strip()])
     return texto
 
-def normalizar(texto):
-    texto = texto.replace("\n", " ")
-    texto = re.sub(r"\s+", " ", texto)
-    return texto.strip()
-
 def separar_entradas(texto):
-    patron = r"\b[a-zA-Zñáéíóúɨ’]+\s+(n\.|v\.|adj\.|pron\.)"
-    matches = list(re.finditer(patron, texto))
+    return texto.split("\n")
 
-    entradas = []
-    for i in range(len(matches)):
-        start = matches[i].start()
-        end = matches[i+1].start() if i+1 < len(matches) else len(texto)
-        entradas.append(texto[start:end].strip())
+# Detecta dónde termina el lexema (puede ser compuesto) buscando la primera parte de oración
+def extraer_lx_ps(texto):
+    tokens = texto.split()
+    for i, tok in enumerate(tokens):
+        if tok in PARTES_ORACION:
+            lx = " ".join(tokens[:i])
+            ps = tok
+            return lx, ps
+    return "", ""
 
-    return entradas
+# Separa dn (español) y de (inglés) usando la segunda parte de oración como divisor
+def extraer_dn_de(texto, ps):
+    resto = re.split(re.escape(ps), texto, maxsplit=1)[-1].strip()
+    tokens = resto.split()
+    for i, tok in enumerate(tokens):
+        if tok in PARTES_ORACION:
+            dn = " ".join(tokens[:i]).strip()
+            de = " ".join(tokens[i + 1:]).strip()
+            return dn, de
+    return resto, ""
+
+# Extrae nombre científico: dos palabras en Title Case + minúscula seguidas de punto
+def extraer_sc(texto):
+    match = re.search(r'\b([A-Z][a-z]+\s+[a-z]+)\.', texto)
+    return match.group(1) if match else ""
 
 def entrada(texto, id_counter):
-    entrada = {
+    lx, ps = extraer_lx_ps(texto)
+    dn, de = extraer_dn_de(texto, ps) if ps else ("", "")
+    sc = extraer_sc(texto)
+
+    if sc:
+        dn = re.sub(re.escape(sc) + r'\.?', '', dn).strip()
+        de = re.sub(re.escape(sc) + r'\.?', '', de).strip()
+
+    resultado = {
         "id": id_counter,
-        "lx": "",
-        "ps": "",
+        "lx": lx,
+        "ps": ps,
         "sn": "1",
-        "dn": "",
-        "de": ""
+        "dn": dn,
+        "de": de,
     }
 
-    match = re.match(r"^([a-zA-Zñáéíóúɨ’]+)\s+(n\.|v\.|adj\.|pron\.)", texto)
-    if not match:
-        return entrada
-
-    entrada["lx"] = match.group(1)
-    entrada["ps"] = match.group(2)
-
-    resto = texto[match.end():].strip()
-    #busca el segundo ps
-    match_ps2 = re.search(r"\b(n\.|v\.|adj\.|pron\.)\s+", resto)
-
-    if match_ps2:
-        # español = antes del segundo ps
-        esp = resto[:match_ps2.start()].strip()
-
-        # ingles = después del segundo ps
-        eng = resto[match_ps2.end():].strip()
-
-        entrada["dn"] = esp if esp.endswith(".") else esp + "."
-        entrada["de"] = eng.strip()
-
-    else:
-        partes = re.split(r"\.\s+", resto)
-        if len(partes) >= 2:
-            entrada["dn"] = partes[0].strip() + "."
-            entrada["de"] = partes[1].strip()
-        else:
-            entrada["dn"] = resto
-
-    # ---------------------
-    # 3. limpiar siguiente entrada en inglés
-    # ---------------------
-    entrada["de"] = re.sub(
-        r"\b[a-zA-Zñáéíóúɨ’]+\s+(n\.|v\.|adj\.|pron\.)$",
-        "",
-        entrada["de"]
-    ).strip()
-
-    return entrada
-
-def procesar(texto):
-    texto = normalizar(texto)
-    entradas = separar_entradas(texto)
-
-    resultado = []
-    for i, e in enumerate(entradas, start=1):
-        if len(e) > 5:
-            resultado.append(entrada(e, i))
+    if sc:
+        resultado["sc"] = sc
 
     return resultado
 
+def procesar(texto):
+    entradas = separar_entradas(texto)
+    resultado = []
 
-# Guarda el archivo de salida
+    for i, e in enumerate(entradas, start=1):
+        if e.strip():
+            parsed = entrada(e, i)
+            resultado.append(parsed)
+
+    return resultado
+
 def guardar_json(data, ruta):
     with open(ruta, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
-
 
 def main():
     archivo = "Diccionarioiskonawa.docx"
@@ -100,8 +85,7 @@ def main():
     data = procesar(texto)
     guardar_json(data, salida)
 
-    print("Diccionario generado:", salida)
-
+    print("Diccionario listo:", salida)
 
 if __name__ == "__main__":
     main()
