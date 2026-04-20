@@ -4,7 +4,6 @@ import json
 
 PARTES_ORACION = {"n.", "v.", "adj.", "adv.", "pron.", "prep.", "conj.", "interj.", "art.", "num.", "suf.", "pref.", "loc.", "expr."}
 
-# Lee el documento y extrae texto párrafo por párrafo
 def leer_docx(ruta):
     doc = Document(ruta)
     texto = "\n".join([p.text.strip() for p in doc.paragraphs if p.text.strip()])
@@ -13,7 +12,7 @@ def leer_docx(ruta):
 def separar_entradas(texto):
     return texto.split("\n")
 
-# Detecta dónde termina el lexema (puede ser compuesto) buscando la primera parte de oración
+# Detecta el lexema (puede ser compuesto)
 def extraer_lx_ps(texto):
     tokens = texto.split()
     for i, tok in enumerate(tokens):
@@ -23,7 +22,7 @@ def extraer_lx_ps(texto):
             return lx, ps
     return "", ""
 
-# Separa dn (español) y de (inglés) usando la segunda parte de oración como divisor
+# Separa español e inglés
 def extraer_dn_de(texto, ps):
     resto = re.split(re.escape(ps), texto, maxsplit=1)[-1].strip()
     tokens = resto.split()
@@ -34,7 +33,7 @@ def extraer_dn_de(texto, ps):
             return dn, de
     return resto, ""
 
-# Extrae nombre científico: dos palabras en Title Case + minúscula seguidas de punto
+# nombre científico
 def extraer_sc(texto):
     match = re.search(r'\b([A-Z][a-z]+\s+[a-z]+)\.', texto)
     return match.group(1) if match else ""
