@@ -1,0 +1,166 @@
+[
+    {
+        "id": 2,
+        "lx": "AHSIKI",
+        "ps": "v.1, intr. dir.",
+        "sn": "1",
+        "dn": "Llegará aquí. Ahsilin",
+        "xv_xn": [],
+        "nt": "",
+        "cf": ""
+    },
+    {
+        "id": 3,
+        "lx": "AHSITI",
+        "ps": "v.1, intr. dir.",
+        "sn": "1",
+        "dn": "Llegará allá. Ahsitok cont. – Está completo(a). Ahwa v.1 – Reprende, regaña.",
+        "xv_xn": [
+            {
+                "xv": "kahwa",
+                "xn": "lo regaña. Ahwakuawitl s. – Árbol grande silvestre, cuya madera, al partirse, es ahuatudo, tiene pelusa irritante. Ahwalistli s. – Regaño. Ahwani s. – El que regaña. Ahwatl s. – Espina fina, pelillo irritante que tienen algunas plantas o insectos. Ahwatok cont. – Regañando. Ahwaxtlan s. – Lugar lleno de rocio. Ahwaxtli s. – Rocío. Ahwiak adj. – Olor."
+            }
+        ],
+        "nt": "",
+        "cf": ""
+    },
+    {
+        "id": 4,
+        "lx": "CHO",
+        "ps": "v.5",
+        "sn": "1",
+        "dn": "Sonajear, lanzar con impulso un objeto.",
+        "xv_xn": [
+            {
+                "xv": "xikayakacho in tetl",
+                "xn": "impúlsate y lanza la piedra. Ayakachtli s. – Sonaja, maraca. Ayakmo adv. – Ya no. Dícese ayekmo, ayikmo, Ap. akmo. Ayamo adv. – Aún no, todavía no. Dícese ayemo, ayimo. Ayekmo vea ayakmo Ayemo vea ayamo. Ayik adv. – Jamás."
+            }
+        ],
+        "nt": "",
+        "cf": ""
+    },
+    {
+        "id": 5,
+        "lx": "NALTI",
+        "ps": "v.4",
+        "sn": "1",
+        "dn": "Hacer gotear.",
+        "xv_xn": [
+            {
+                "xv": "xik",
+                "xn": "chipinalti – hazle gotear. Chipinalli"
+            }
+        ],
+        "nt": "",
+        "cf": ""
+    },
+    {
+        "id": 6,
+        "lx": "KATZALTILI",
+        "ps": "v.4",
+        "sn": "1",
+        "dn": "Parárselo, levantárselo. Ketzotl s. – Lagartija.",
+        "xv_xn": [
+            {
+                "xv": "xio kiawak",
+                "xn": "vete afuera. Se usa como eufemismo: niah kiawak – voy afuera (a orinar o a defecar)."
+            }
+        ],
+        "nt": "",
+        "cf": ""
+    },
+    {
+        "id": 7,
+        "lx": "KONITOK",
+        "ps": "cont.",
+        "sn": "1",
+        "dn": "Está bebiéndolo. KONTZIN s. – Jarro, jarrito.",
+        "xv_xn": [
+            {
+                "xv": "onikopki in atl",
+                "xn": "vertí el agua"
+            },
+            {
+                "xv": "onimokopki",
+                "xn": "me regresé. Dícese kopa. Kopalkuawitl s. – Árbol de copal o resinoso. Kopalnamakani"
+            }
+        ],
+        "nt": "",
+        "cf": ""
+    },
+    {
+        "id": 8,
+        "lx": "KUAWTZONTEKI",
+        "ps": "v.1",
+        "sn": "1",
+        "dn": "Trozar árboles.",
+        "xv_xn": [
+            {
+                "xv": "okuawxinki",
+                "xn": "labró madera. Kuawximaloni s.\t–\tUtensilio\tpara labrar madera. Kuawximaloyan s. – Carpintería. Kuawximalli s. – Madera labrada. Kuawximani s. – Carpintero, labrador de madera."
+            }
+        ],
+        "nt": "",
+        "cf": ""
+    },
+    {
+        "id": 9,
+        "lx": "NALTI",
+        "ps": "v.4",
+        "sn": "1",
+        "dn": "Martajárselo(a).",
+        "xv_xn": [
+            {
+                "xv": "xikpayanalti inextamal",
+                "xn": "martájale su nixtamal. Payania,  Payanih,  Payani  v.4  – Martajar."
+            }
+        ],
+        "nt": "",
+        "cf": ""
+    },
+    {
+        "id": 10,
+        "lx": "TEPEMASATL",
+        "ps": "s.",
+        "sn": "1",
+        "dn": "Venado. Tepeowatl\ts.\t–\tCañuela\t(Costum mexicanus). Tepesolin s. – Perdiz. Tepetl s. – Cerro. Tepetlatl s. – Tepetate, roca formada por capas parecidas a esteras. Tepetlayoh adj. – Escabroso, rocoso. Tepetomatl\ts.\t–\tMadroño (Arctostaphylos spp.).",
+        "xv_xn": [
+            {
+                "xv": "otepewik",
+                "xn": "le dio el mal de montaña. Tepewitzayohtli s. – Chayote de monte (Selaginella cuspidata )."
+            }
+        ],
+        "nt": "",
+        "cf": ""
+    },
+    {
+        "id": 11,
+        "lx": "TLATOPONILONI",
+        "ps": "s.",
+        "sn": "1",
+        "dn": "Arma de fuego.",
+        "xv_xn": [
+            {
+                "xv": "tlatz kokok",
+                "xn": "excesivamente picoso. Tlatzihkatl\ts.\t–\tFlojo,\tholgazán, perezoso. Tlatzihkayotl\ts.\t–\tFlojera, holgazanería, pereza. Tlatzihki s. – Perezoso. Tlatziktli s. – Algo que se atora, lo que se atora. Tlatzinilia, Tlatzilinih, Tlatzilini v.4 – Darle un golpe sonoro."
+            }
+        ],
+        "nt": "",
+        "cf": ""
+    },
+    {
+        "id": 12,
+        "lx": "WEYAKAYOTL",
+        "ps": "s.",
+        "sn": "1",
+        "dn": "Longitud. Weyaktik adj. – Alargado.",
+        "xv_xn": [
+            {
+                "xv": "inin kuawitl weyaktik",
+                "xn": "este palo está alargado. Weyaltepetl s.\t–\tCiudad,\tpueblo grande."
+            }
+        ],
+        "nt": "",
+        "cf": ""
+    }
+]
