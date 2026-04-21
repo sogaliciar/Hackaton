@@ -1,30 +1,45 @@
 # Extractores de Diccionarios a Formato MDF (JSON)
 
-Este repositorio contiene dos extractores capaces de convertir diccionarios en formato `.docx` a un esquema estructurado basado en el estándar **MDF (Machine-Readable Dictionary Format)**, generando archivos de salida en **JSON**.
+Este repositorio contiene cinco extractores capaces de convertir diccionarios en formato `.docx` a un esquema estructurado basado en el estándar **MDF (Machine-Readable Dictionary Format)**, generando archivos de salida en **JSON**.
 
 ## Diccionarios procesados
 
-- **VOCABULARIO ISKONAWA-CASTELLANO-INGLÉS**
+- **Vocabulario Iskonawa – Castellano – Inglés**
+- **Vocabulario Maya – Español – Maya**
+- **Vocabulario Zapoteco – Español – Zapoteco**
+- **Vocabulario Náhuatl – Español – Náhuatl**
 - **Vocabulario Popoluca de la Sierra – Español – Popoluca de la Sierra**
 
+---
 
+## Estructura del repositorio
+
+Cada diccionario cuenta con su propia carpeta, que contiene:
+- El código del extractor
+- El diccionario en docx
+- El archivo JSON generado
+
+---
 
 ## Cómo usar
 
 ### 1. Descarga los archivos fuente
 
-Descarga los archivos `.docx` modificados:
+Cada carpeta contiene el archivo `.docx` correspondiente:
 
-- `DiccionarioPopulaca.docx`
 - `DiccionarioIskonawa.docx`
+- `DiccionarioMaya.docx`
+- `DiccionarioZapoteco.docx`
+- `DiccionarioNahuatl.docx`
+- `DiccionarioPopulaca.docx`
 
-> **Nota:** Estos documentos fueron preprocesados para conservar únicamente las entradas léxicas. Se eliminó la introducción y cualquier sección que no correspondiera a definiciones.
+> **Nota:** Algunos de estos documentos fueron preprocesados para conservar únicamente las entradas léxicas. Se eliminó la introducción y cualquier sección que no correspondiera a definiciones.
 
 ### 2. Ejecuta el programa
 
-Corre el extractor correspondiente. Al finalizar, se generarán dos archivos JSON con todas las entradas del diccionario etiquetadas en formato MDF.
+Entra a la carpeta del diccionario que deseas procesar y corre el extractor correspondiente. Al finalizar, se generará un archivo JSON con todas las entradas del diccionario etiquetadas en formato MDF.
 
-
+---
 
 ## Etiquetas MDF propuestas
 
