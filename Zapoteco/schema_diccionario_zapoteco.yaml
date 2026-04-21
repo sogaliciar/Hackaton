@@ -1,0 +1,134 @@
+formato: MDF
+idioma: zapoteco
+archivo_salida: salidaDiccZapoteco.json
+
+descripcion_general:
+  - "Esquema de salida para el extractor del diccionario zapoteco."
+  - "Mantiene compatibilidad conceptual con MDF y con el estilo de salida JSON del repositorio."
+  - "Se agregan dos campos auxiliares: entry_type y parent_lx, para conservar relaciones entre entrada principal, sentido y subentrada."
+
+campos:
+  id:
+    tipo: integer
+    requerido: true
+    descripcion: "Identificador consecutivo de la entrada"
+
+  lx:
+    etiqueta_mdf: "\\lx"
+    tipo: string
+    requerido: true
+    descripcion: "Lexema o headword"
+
+  ps:
+    etiqueta_mdf: "\\ps"
+    tipo: string
+    requerido: false
+    descripcion: "Parte de la oración"
+
+  sn:
+    etiqueta_mdf: "\\sn"
+    tipo: string
+    requerido: true
+    descripcion: "Número de sentido"
+    valor_por_defecto: "1"
+
+  ph:
+    etiqueta_mdf: "\\ph"
+    tipo: list[string]
+    requerido: false
+    descripcion: "Una o más transcripciones fonéticas"
+
+  dn:
+    etiqueta_mdf: "\\dn"
+    tipo: string
+    requerido: false
+    descripcion: "Definición en español"
+
+  de:
+    etiqueta_mdf: "\\de"
+    tipo: string
+    requerido: false
+    descripcion: "Definición en inglés"
+
+  ejemplos:
+    tipo: list[object]
+    requerido: false
+    descripcion: "Lista de ejemplos de uso"
+    estructura:
+      xv:
+        etiqueta_mdf: "\\xv"
+        tipo: string
+        descripcion: "Ejemplo en lengua vernácula"
+      xn:
+        etiqueta_mdf: "\\xn"
+        tipo: string
+        descripcion: "Traducción del ejemplo al español"
+      xe:
+        etiqueta_mdf: "\\xe"
+        tipo: string
+        descripcion: "Traducción del ejemplo al inglés"
+
+  mr:
+    etiqueta_mdf: "\\mr"
+    tipo: list[string]
+    requerido: false
+    descripcion: "Representación morfológica"
+
+  cf:
+    etiqueta_mdf: "\\cf"
+    tipo: list[string]
+    requerido: false
+    descripcion: "Referencias cruzadas"
+
+  lv:
+    etiqueta_mdf: "\\lv"
+    tipo: list[string]
+    requerido: false
+    descripcion: "Lexemas o variantes relacionadas"
+
+  et:
+    etiqueta_mdf: "\\et"
+    tipo: list[string]
+    requerido: false
+    descripcion: "Etimología, protoformas o cognados"
+
+  nt:
+    etiqueta_mdf: "\\nt"
+    tipo: string
+    requerido: false
+    descripcion: "Notas generales"
+
+campos_auxiliares:
+  entry_type:
+    tipo: string
+    valores_permitidos:
+      - entry
+      - sense
+      - subentry
+    descripcion: "Clasifica el registro como entrada principal, sentido alterno o subentrada"
+
+  parent_lx:
+    tipo: string
+    requerido: false
+    descripcion: "Lexema principal del que depende una subentrada o sentido"
+
+  raw:
+    tipo: string
+    requerido: false
+    descripcion: "Texto bruto conservado cuando la heurística no puede segmentar con seguridad"
+
+ejemplo:
+  id: 1
+  lx: "awá'"
+  ps: "part."
+  sn: "1"
+  ph:
+    - "awáʔ"
+    - "ʔawáʔ"
+  dn: "sí"
+  de: "yes"
+  ejemplos:
+    - xv: "Awa, llsedla'be' di'llwrall"
+      xn: "Sí, estoy enseñando zapoteco"
+      xe: "Yes, I am teaching Zapotec."
+  entry_type: "entry"
